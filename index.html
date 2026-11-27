@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a0b">
+  <meta name="description" content="Andre Arshavin Colee — Visual Storytelling Portfolio">
+  <title>Andre Arshavin Colee — Visual Storytelling</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090a0b;
+      --panel: #121416;
+      --line: #292d30;
+      --fg: #f2f0eb;
+      --muted: #a4a5a3;
+      --warm: #d5cbbd;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea {
+      font: inherit;
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 44px));
+      margin: auto;
+    }
+
+    /* Header */
+    header {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ffffff17;
+      position: relative;
+      z-index: 5;
+    }
+
+    .logo {
+      font: 700 27px "Space Grotesk", sans-serif;
+      letter-spacing: -3px;
+    }
+
+    .logo span {
+      color: #a9a49c;
+    }
+
+    .nav {
+      display: flex;
+      gap: 30px;
+      font-size: 12px;
+      color: #c8c7c3;
+    }
+
+    .nav a:hover {
+      color: #fff;
+    }
+
+    .head-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menu {
+      display: none;
+      background: none;
+      border: 0;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 610px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, #090a0b 0%, #090a0bd9 32%, #090a0b44 100%),
+        linear-gradient(0deg, #090a0b 0%, transparent 45%),
+        var(--hero) center/cover;
+      opacity: .95;
+      transform: scale(1.035);
+      animation: heroImage 1.8s ease both;
+    }
+
+    .hero-inner {
+      position: relative;
+      padding: 85px 0;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c9c3b8;
+    }
+
+    .eyebrow:before {
+      content: "";
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: #a9a49c;
+      vertical-align: middle;
+      margin-right: 12px;
+    }
+
+    .hero h1 {
+      font: 600 clamp(48px, 8vw, 88px)/.98 "Space Grotesk", sans-serif;
+      letter-spacing: -5px;
+      margin: 25px 0;
+    }
+
+    .hero h1 em,
+    .section-title em {
+      font-weight: 400;
+      color: #bdb6aa;
+    }
+
+    .intro {
+      max-width: 440px;
+      color: #c3c2bd;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 22px;
+      font-size: 12px;
+    }
+
+    .play {
+      width: 42px;
+      height: 42px;
+      border: 1px solid #aaa;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: .3s;
+    }
+
+    .cta:hover .play {
+      background: #fff;
+      color: #111;
+      transform: rotate(90deg);
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 25px;
+      color: #999;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    /* Sections */
+    section {
+      padding: 90px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr .8fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .about-img {
+      height: 440px;
+      background: center 18%/cover no-repeat;
+      filter: grayscale(1);
+    }
+
+    .section-title {
+      font: 600 clamp(32px, 4vw, 48px)/1.05 "Space Grotesk", sans-serif;
+      letter-spacing: -2px;
+      margin: 17px 0;
+    }
+
+    .aboutname {
+      font: 600 15px "Space Grotesk", sans-serif;
+      letter-spacing: .5px;
+      color: #fff;
+      margin: 14px 0 6px;
+    }
+
+    .copy {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .skills {
+      border-left: 1px solid var(--line);
+      padding-left: 28px;
+    }
+
+    .skill {
+      padding: 11px 0;
+      font-size: 13px;
+      color: #ddd;
+      border-bottom: 1px solid #ffffff10;
+    }
+
+    .tools {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #999;
+      margin-top: 20px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chips span {
+      border: 1px solid #666;
+      padding: 6px 8px;
+      border-radius: 5px;
+      font: 600 11px "Space Grotesk", sans-serif;
+    }
+
+    /* Portfolio */
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 25px;
+    }
+
+    .section-head .section-title {
+      margin-bottom: 0;
+    }
+
+    .hint {
+      font-size: 11px;
+      color: #999;
+      line-height: 1.6;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 22px 0;
+    }
+
+    .filter {
+      border: 1px solid #45484a;
+      background: transparent;
+      color: #aaa;
+      border-radius: 30px;
+      padding: 8px 15px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .filter.active,
+    .filter:hover {
+      background: #eee;
+      color: #111;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 17px;
+    }
+
+    .work {
+      position: relative;
+      min-height: 320px;
+      overflow: hidden;
+      background: #17191b;
+      cursor: pointer;
+    }
+
+    .work img {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(.78);
+      transition: transform .7s, filter .5s;
+    }
+
+    .work:hover img {
+      transform: scale(1.055);
+      filter: brightness(1);
+    }
+
+    .work-info {
+      position: absolute;
+      inset: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(180deg, #0006, transparent 35%, transparent 55%, #000b);
+    }
+
+    .work-top,
+    .work-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #ddd;
+    }
+
+    .work-name {
+      font: 600 24px "Space Grotesk", sans-serif;
+    }
+
+    /* Featured */
+    .featured {
+      min-height: 390px;
+      background: linear-gradient(90deg, #08090be8, #08090b40), var(--feature) center/cover;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .featured .copy {
+      max-width: 390px;
+    }
+
+    /* Contact */
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+      font-size: 12px;
+      color: #ddd;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: #141719;
+      border: 1px solid #303437;
+      color: #fff;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .contact-form textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .submit {
+      justify-self: end;
+      background: #eee;
+      color: #111;
+      border: 0;
+      border-radius: 30px;
+      padding: 13px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      padding: 25px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #888;
+      font-size: 11px;
+    }
+
+    .footlinks {
+      display: flex;
+      gap: 18px;
+    }
+
+    /* Animations & Utilities */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .75s, transform .75s;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translate(-50%, 20px);
+      opacity: 0;
+      background: #eee;
+      color: #111;
+      padding: 11px 16px;
+      border-radius: 30px;
+      font-size: 12px;
+      z-index: 30;
+      transition: .3s;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @keyframes heroImage {
+      from {
+        transform: scale(1.1);
+        filter: blur(3px);
+      }
+      to {
+        transform: scale(1.035);
+        filter: blur(0);
+      }
+    }
+
+    /* Video Modal */
+    .vbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #000e;
+      z-index: 40;
+      place-items: center;
+      padding: 18px;
+    }
+
+    .vbox.open {
+      display: grid;
+    }
+
+    .vwrap {
+      width: min(1000px, 100%);
+      position: relative;
+    }
+
+    .vwrap video {
+      width: 100%;
+      max-height: 80vh;
+      background: #000;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .vtitle {
+      font: 600 16px "Space Grotesk", sans-serif;
+      margin: 0 0 10px;
+      color: #fff;
+    }
+
+    .vclose {
+      position: absolute;
+      right: 0;
+      top: -46px;
+      background: none;
+      border: 1px solid #666;
+      color: #fff;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .work[data-video]:not([data-video=""]) {
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .wrap {
+        width: calc(100% - 34px);
+      }
+      .nav {
+        display: none;
+        position: absolute;
+        top: 77px;
+        left: 0;
+        right: 0;
+        background: #111416;
+        padding: 22px;
+        flex-direction: column;
+      }
+      .nav.open {
+        display: flex;
+      }
+      .menu {
+        display: block;
+      }
+      .about {
+        grid-template-columns: 1fr 1fr;
+      }
+      .skills {
+        grid-column: 1/-1;
+        border-left: 0;
+        border-top: 1px solid var(--line);
+        padding: 20px 0 0;
+      }
+      .contact {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .featured {
+        background-attachment: scroll;
+      }
+      .hero {
+        min-height: 570px;
+      }
+      section {
+        padding: 70px 0;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .about {
+        grid-template-columns: 1fr;
+      }
+      .about-img {
+        height: 400px;
+      }
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      .work, .work img {
+        min-height: 275px;
+      }
+      .hero h1 {
+        font-size: 49px;
+        letter-spacing: -3px;
+      }
+      .section-head {
+        align-items: start;
+        gap: 10px;
+        flex-direction: column;
+      }
+      .featured {
+        min-height: 380px;
+      }
+      footer {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      .footlinks {
+        width: 100%;
+        order: 3;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *:before, *:after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="logo" href="#home">A<span>/</span></a>
+    <nav class="nav" id="nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="head-actions">
+      <button class="menu" id="menu" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home" style="--hero:url('assets/images/hero.jpg')">
+      <div class="wrap hero-inner">
+        <div class="eyebrow">Visual Portfolio</div>
+        <h1 id="heroTitle">Capturing Ideas,<br>Creating <em>Impact.</em></h1>
+        <p class="intro" id="heroIntro">Halo! Saya kreator visual yang berfokus pada fotografi dan videografi. Saya percaya setiap frame punya cerita untuk disampaikan.</p>
+        <a class="cta" href="#portfolio"><span class="play">▶</span> Explore My Works</a>
+        <div class="scroll">↓ &nbsp; SCROLL TO EXPLORE</div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about">
+        <div class="about-img reveal" id="profileImage" style="background-image:url('assets/images/profile.jpg')"></div>
+        <div class="reveal">
+          <div class="eyebrow">About Me</div>
+          <h2 class="section-title" id="aboutTitle">A Visual Creator<br>from a <em>Dreamer.</em></h2>
+          <p class="aboutname">Andre Arshavin Colee</p>
+          <p class="copy" id="bio">Saya adalah siswa SMK jurusan Desain Komunikasi Visual (DKV) yang memiliki ketertarikan besar pada dunia fotografi dan videografi. Melalui karya-karya ini, saya ingin menyampaikan cerita, emosi, dan pesan yang bermakna.</p>
+        </div>
+        <aside class="skills reveal">
+          <div class="eyebrow">What I Do</div>
+          <div class="skill" id="skill1">◎ &nbsp; Photography</div>
+          <div class="skill" id="skill2">▶ &nbsp; Videography</div>
+          <div class="skill" id="skill3">✳ &nbsp; Visual Storytelling</div>
+          <div class="tools">
+            TOOLS I USE
+            <div class="chips" id="tools">
+              <span>Ps</span>
+              <span>Lr</span>
+              <span>Pr</span>
+              <span>Ae</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Selected Works</div>
+            <h2 class="section-title">My <em>Portfolio.</em></h2>
+          </div>
+          <span class="hint">A collection of moments & stories ↘</span>
+        </div>
+        <div class="filters reveal">
+          <button class="filter active" data-filter="all">All Works</button>
+          <button class="filter" data-filter="photo">Photography</button>
+          <button class="filter" data-filter="video">Videography</button>
+        </div>
+        <div class="gallery" id="gallery">
+          <!-- Diisi otomatis oleh JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <section class="featured" id="featured" style="--feature:url('assets/images/featured.jpg')">
+      <div class="wrap reveal">
+        <div class="eyebrow">Featured Project</div>
+        <h2 class="section-title" id="featuredTitle">Visual Storytelling in Every Frame.</h2>
+        <p class="copy" id="featuredText">Ruang untuk menampilkan video terbaikmu — film pendek, cinematic reel, atau dokumentasi.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap contact">
+        <div class="reveal">
+          <div class="eyebrow">Get In Touch</div>
+          <h2 class="section-title">Let's Create<br>Something Great <em>Together.</em></h2>
+          <p class="copy">Punya proyek, ide kreatif, atau ingin berkolaborasi? Saya akan senang mendengar ceritamu.</p>
+          <div class="socials">
+            <a id="instagram" href="https://instagram.com/" target="_blank" rel="noopener">◎ Instagram</a>
+            <a id="emailLink" href="mailto:hello@example.com">✉ Email</a>
+            <a id="whatsapp" href="https://wa.me/" target="_blank" rel="noopener">◉ WhatsApp</a>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contactForm">
+          <input id="sender" placeholder="Nama kamu" required>
+          <input id="senderEmail" type="email" placeholder="Alamat email" required>
+          <textarea id="message" placeholder="Ceritakan pesan atau ide kolaborasimu..." required></textarea>
+          <button class="submit" type="submit">Kirim Pesan ↗</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <a class="logo" href="#home">A<span>/</span></a>
+    <span>© <span id="year"></span> <span id="footerName">Andre Arshavin Colee</span>. All rights reserved.</span>
+    <div class="footlinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <div class="vbox" id="vbox" role="dialog" aria-modal="true" aria-label="Video">
+    <div class="vwrap">
+      <button class="vclose" id="vclose" aria-label="Tutup">×</button>
+      <p class="vtitle" id="vtitle"></p>
+      <video id="vplayer" controls playsinline preload="none"></video>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const defaults = {
+      brand: "Andre Arshavin Colee",
+      email: "hello@example.com",
+      hero: "Capturing Ideas,|Creating Impact.",
+      intro: "Halo! Saya kreator visual yang berfokus pada fotografi dan videografi. Saya percaya setiap frame punya cerita untuk disampaikan.",
+      bio: "Saya adalah siswa SMK jurusan Desain Komunikasi Visual (DKV) yang memiliki ketertarikan besar pada dunia fotografi dan videografi. Melalui karya-karya ini, saya ingin menyampaikan cerita, emosi, dan pesan yang bermakna.",
+      instagram: "https://instagram.com/",
+      whatsapp: "",
+      profile: "assets/images/profile.jpg",
+      heroImage: "assets/images/hero.jpg",
+      featuredImage: "assets/images/featured.jpg",
+      featuredTitle: "Visual Storytelling in Every Frame.",
+      featuredText: "Ruang untuk menampilkan video terbaikmu — film pendek, cinematic reel, atau dokumentasi.",
+      works: [
+        {
+          type: "photo",
+          title: "Chasing Light",
+          category: "Night Photography",
+          image: "assets/images/work_1.jpg"
+        },
+        {
+          type: "photo",
+          title: "Human Stories",
+          category: "Portrait",
+          image: "assets/images/work_2.jpg"
+        },
+        {
+          type: "video",
+          title: "Bong Ja",
+          category: "Documentary",
+          video: "assets/videos/bong_ja.mp4",
+          image: "assets/images/work_3.jpg"
+        },
+        {
+          type: "video",
+          title: "Moon Cake Asoka",
+          category: "Event Coverage",
+          video: "assets/videos/moon_cake_asoka.mp4",
+          image: "assets/images/work_4.jpg"
+        }
+      ]
+    };
+
+    let data = structuredClone(defaults);
+    const $ = id => document.getElementById(id);
+
+    function toast(msg) {
+      $('toast').textContent = msg;
+      $('toast').classList.add('show');
+      setTimeout(() => $('toast').classList.remove('show'), 2200);
+    }
+
+    function lineTitle(s) {
+      return s.split('|').map((x, i) => i === 0 ? esc(x) : '<br><em>' + esc(x) + '</em>').join('');
+    }
+
+    function esc(s) {
+      return String(s ?? '').replace(/[&<>"']/g, c => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[c]));
+    }
+
+    function render() {
+      $('footerName').textContent = data.brand;
+      $('heroTitle').innerHTML = lineTitle(data.hero);
+      $('heroIntro').textContent = data.intro;
+      $('bio').textContent = data.bio;
+      $('profileImage').style.backgroundImage = `url("${data.profile}")`;
+      document.querySelector('.hero').style.setProperty('--hero', `url("${data.heroImage}")`);
+      $('featured').style.setProperty('--feature', `url("${data.featuredImage}")`);
+      $('featuredTitle').textContent = data.featuredTitle;
+      $('featuredText').textContent = data.featuredText;
+      $('instagram').href = data.instagram;
+      $('emailLink').href = 'mailto:' + data.email;
+      $('whatsapp').href = data.whatsapp ? 'https://wa.me/' + data.whatsapp.replace(/\D/g, '') : 'https://wa.me/';
+
+      $('gallery').innerHTML = data.works.map((w, i) => `
+        <article class="work reveal show" data-type="${w.type}" data-video="${esc(w.video || '')}">
+          <img src="${esc(w.image)}" alt="${esc(w.title)}" loading="lazy">
+          <div class="work-info">
+            <div class="work-top">
+              <span class="tag">${w.type === 'photo' ? 'Photography' : 'Videography'} / ${String(i + 1).padStart(3, '0')}</span>
+              <span>${w.type === 'photo' ? '↗' : '▶'}</span>
+            </div>
+            <div class="work-bottom">
+              <span class="work-name">${esc(w.title)}</span>
+              <span>${esc(w.category)}</span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      bindFilters();
+    }
+
+    function bindFilters() {
+      document.querySelectorAll('.filter').forEach(b => {
+        b.onclick = () => {
+          document.querySelectorAll('.filter').forEach(x => x.classList.remove('active'));
+          b.classList.add('active');
+          document.querySelectorAll('.work').forEach(c => {
+            c.style.display = (b.dataset.filter === 'all' || c.dataset.type === b.dataset.filter) ? 'block' : 'none';
+          });
+        };
+      });
+    }
+
+    $('menu').onclick = () => $('nav').classList.toggle('open');
+    document.querySelectorAll('.nav a').forEach(a => a.onclick = () => $('nav').classList.remove('open'));
+
+    $('contactForm').onsubmit = e => {
+      e.preventDefault();
+      const subject = encodeURIComponent('Pesan portofolio dari ' + $('sender').value);
+      const body = encodeURIComponent('Nama: ' + $('sender').value + '\nEmail: ' + $('senderEmail').value + '\n\n' + $('message').value);
+      location.href = 'mailto:' + data.email + '?subject=' + subject + '&body=' + body;
+    };
+
+    $('year').textContent = new Date().getFullYear();
+    render();
+
+    const vbox = $('vbox'), vplayer = $('vplayer');
+    function closeVideo() {
+      vplayer.pause();
+      vplayer.removeAttribute('src');
+      vplayer.load();
+      vbox.classList.remove('open');
+    }
+
+    $('gallery').addEventListener('click', e => {
+      const c = e.target.closest('.work');
+      if (!c || !c.dataset.video) return;
+      $('vtitle').textContent = c.querySelector('.work-name').textContent;
+      vplayer.src = c.dataset.video;
+      vbox.classList.add('open');
+      vplayer.play().catch(() => {});
+    });
+
+    $('vclose').onclick = closeVideo;
+    vbox.addEventListener('click', e => { if (e.target === vbox) closeVideo(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && vbox.classList.contains('open')) closeVideo();
+    });
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('show');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: .12 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
+    }
+  </script>
+</body>
+</html>
